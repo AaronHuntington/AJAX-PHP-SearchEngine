@@ -7,8 +7,6 @@
     $word = $_POST['search'];
 
     $searched_words = $words->search_words($word);
-    // echo '<pre>';
-    // var_dump($searched_words);
 ?>
         <table>
             <tr class="row">
@@ -22,7 +20,12 @@
             <tr class='row'>
                 <td class='col-md-2'><?php echo $word['id'];?></td>
                 <td class='col-md-4'><?php echo $word['words'];?></td>
-                <td class='col-md-6'><?php echo $word['definition'];?></td>
+                <td class='col-md-6'>
+                    <?php echo $word['definition'];?>
+                    <a href="delete_word.php?id=<?php echo $word['id'];?>&word=<?php echo $word['words'];?>" class="pull-right">
+                        Delete
+                    </a>
+                </td>
             </tr>
 <?php
     }

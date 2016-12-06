@@ -10,7 +10,6 @@
     $words->word = $word;
     $words->definition = $definition;
 
-
     $words->enter_word();
 
     echo 'word: '.$words->word; 
@@ -21,8 +20,6 @@
     session_start();
 
     $_SESSION['word_entry'] = $word.' has been entered.';
-
-
 
     header("Location: index.php");
 ?>

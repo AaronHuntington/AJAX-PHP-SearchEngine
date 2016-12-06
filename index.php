@@ -1,20 +1,12 @@
 <?php
 	include('includes/config.php');
 	include('includes/header.php');
+    session_start();
 
     $words = new uplifting_words;
 ?>
 <script>
     $(document).ready(function(){
-        $.ajax({
-            url: 'display_cars.php',
-            type: 'POST',
-            success: function(show_cars){
-                if(!show_cars.error){
-                    ("#show-cars").html("HELLO IT WORKS");
-                }
-            }
-        });
         $('#search').keyup(function(){
             var search = $('#search').val();
         
@@ -29,19 +21,6 @@
                 }
             });
         }); 
-        
-        // This code adds cars to the database table cars . 
-        $("#add-car-form").submit(function(evt){
-            
-            evt.preventDefault();
-        
-            var postData = $(this).serialize();
-            var url = $(this).attr('action');
-            
-            $.post(url, postData, function(php_table_data){
-                $("#car-result").html(php_table_data);
-            });
-        }); // Add Car code function ends.
     }); //Document ready function end.
 </script>
 
@@ -66,15 +45,12 @@
                 <br><br>
                 <div class="row">
                     <h3>Word Entry</h3>
-                    <p>
-                        <?php
-                            session_start();
-                            echo $_SESSION['word_entry'];
-                        ?>
-                    </p>
-
-
-
+                    
+                    <?php
+                        if(isset($_SESSION['word_entry'])){
+                            echo '<p>'.$_SESSION['word_entry'].'</p>';
+                        }
+                    ?>
 
                     <form method="post" id="" class="" action="add_word.php">
                         <div class="form-group col-md-12">
@@ -91,17 +67,19 @@
                             <input type="submit" class="btn btn-pro-primary" value="Add Uplifting Word">
                         </div>
                     </form>
-
-
-
-
-
-
-
                 </div>
             </div>
     		<div class="col-md-9">
     			<h1>Results</h1>
+
+                <?php
+                        if(isset($_SESSION['deleted_word'])){
+                            echo '<h4 class="text-center" style="background: red; color: white; font-weight: bold; padding: 2px 0;">';
+                            echo  $_SESSION['deleted_word'];
+                            echo '</h4>';
+                        }
+                        session_unset();
+                ?>
                 <div id="result">
                 </div>
     		</div>

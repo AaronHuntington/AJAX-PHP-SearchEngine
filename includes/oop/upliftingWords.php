@@ -34,7 +34,14 @@
             $to_database = $database->query($sql);
 
             return $to_database;
+        }
 
+        public function delete_word($id){
+
+            global $database;
+
+            $sql = "DELETE FROM uplifting_words WHERE id='".$id."'";
+            return $database->query($sql);
         }
 
     }
