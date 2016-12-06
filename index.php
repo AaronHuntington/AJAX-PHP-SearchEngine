@@ -1,3 +1,7 @@
+<?php
+	include('includes/config.php');
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +15,11 @@
     	<section class="row">
     		<div class="col-md-8 col-md-offset-2">
     			<h1>Search the Database</h1>
+
+    			<?php
+    				echo OOP_ROOTPATH;
+
+    			?>
     		</div>
     	</section>
     </body>
