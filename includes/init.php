@@ -1,3 +1,4 @@
 <?php
-	require_once(INCLUDES_FOLDER_ROOTPATH."database.php");
+    require_once(OOP_ROOTPATH."database.php");
+    require_once(OOP_ROOTPATH."upliftingWords.php");
 ?>
