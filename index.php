@@ -66,7 +66,12 @@
                 <br><br>
                 <div class="row">
                     <h3>Word Entry</h3>
-
+                    <p>
+                        <?php
+                            session_start();
+                            echo $_SESSION['word_entry'];
+                        ?>
+                    </p>
 
 
 

@@ -24,7 +24,7 @@
                 <td class='col-md-4'><?php echo $word['words'];?></td>
                 <td class='col-md-6'><?php echo $word['definition'];?></td>
             </tr>
-        <table>
 <?php
     }
 ?>
+        </table>

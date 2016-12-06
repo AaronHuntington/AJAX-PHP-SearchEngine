@@ -22,7 +22,19 @@
         }
 
         public function enter_word(){
-            
+
+            global $database; 
+
+            $word       = $database->escape_string($this->word);
+            $definition = $database->escape_string($this->definition);
+
+            $sql = "INSERT INTO uplifting_words (`words`,`definition`) 
+                VALUES ('{$word}','{$definition}')";
+
+            $to_database = $database->query($sql);
+
+            return $to_database;
+
         }
 
     }
